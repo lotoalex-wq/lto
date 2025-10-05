@@ -18,7 +18,7 @@ def index():
 @app.route("/run-bot")
 def run_bot():
     try:
-        result = subprocess.run(["python3", "bot_v3.py"], capture_output=True, text=True, timeout=60)
+        result = subprocess.run(["python3", "bot_v3_playwright.py"], capture_output=True, text=True, timeout=60)
         output = result.stdout + "\n" + result.stderr
         flash(output, "info")
     except Exception as e:
