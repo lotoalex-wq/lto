@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto Concours Bot</title>
+    <style>
+        body { font-family: Arial; margin: 2em; }
+        .flash { background-color: #f0f0f0; padding: 1em; margin-bottom: 1em; border-left: 5px solid #4CAF50; }
+        .error { border-color: red; }
+    </style>
+</head>
+<body>
+    <h1>🎯 Auto Concours Bot</h1>
+    <a href="{{ url_for('run_bot') }}">▶️ Lancer le bot maintenant</a>
+    <h2>📜 Historique des participations</h2>
+    <ul>
+        {% for item in history %}
+        <li>{{ item }}</li>
+        {% else %}
+        <p>Aucune participation enregistrée.</p>
+        {% endfor %}
+    </ul>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message|safe }}</div>
+        {% endfor %}
+    {% endwith %}
+</body>
+</html>
